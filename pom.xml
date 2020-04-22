@@ -109,7 +109,7 @@
 							<fileSets>
 								<fileSet>
 									<!-- Report directory Path -->
-									<directory>D:\git\Tenx_Prod2\test-outputt</directory>
+									<directory>D:\git\Tenx_Prod2\test-output</directory>
 									<includes>
 										<!-- Report file name -->
 										<include>ProdStatusReport.html</include>

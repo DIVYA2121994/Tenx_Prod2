@@ -12,7 +12,7 @@ public class ChooseBrowser
       {
 	     if (bname.equalsIgnoreCase("chrome"))
 	     {
-	    	 System.setProperty("webdriver.chrome.driver", "D:\\git\\Tenx_Prod2\\src\\test\\resources\\Drivers\\chromedriver.exe");
+	    	 System.setProperty("webdriver.chrome.driver", "D:\\git\\Tenx_Prod2\\src\\main\\resources\\Drivers\\chromedriver.exe");
 	    	 driver=new ChromeDriver();
 	    	 driver.manage().window().maximize();
 	    	 

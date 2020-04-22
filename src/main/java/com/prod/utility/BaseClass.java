@@ -12,11 +12,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import com.prod.PO.Tenx_po;
 
-import com.prod.pageobjects.TenxPO;
-
-
-public class BaseClass extends TenxPO
+public class BaseClass extends Tenx_po
 {
 	public static WebDriver driver;
 	protected static Properties p = new Properties();
@@ -60,7 +58,7 @@ public class BaseClass extends TenxPO
 	{
 		try
 		{
-		 File file = new File ("D:\\git\\Tenx_Prod2\\src\\test\\resources");
+		 File file = new File ("D:\\git\\Tenx_Prod2\\src\\test\\resources\\config.properties");
 		 FileInputStream fis = new FileInputStream (file);
 		 p.load(fis);
 		}
