@@ -12,7 +12,7 @@ public class ChooseBrowser
       {
 	     if (bname.equalsIgnoreCase("chrome"))
 	     {
-	    	 System.setProperty("webdriver.chrome.driver", "E:\\Selenium-Programs\\ProductionStatus\\src\\test\\resources\\Drivers\\chromedriver.exe");
+	    	 System.setProperty("webdriver.chrome.driver", "D:\\git\\Tenx_Prod2\\src\\test\\resources\\Drivers\\chromedriver.exe");
 	    	 driver=new ChromeDriver();
 	    	 driver.manage().window().maximize();
 	    	 
@@ -21,7 +21,7 @@ public class ChooseBrowser
 	     else if(bname.equalsIgnoreCase("firefox"))
 	     {
 	    	driver = new FirefoxDriver(); 
-	    	System.setProperty("webdriver.gecko.driver", "E:\\Selenium-Programs\\ProductionStatus\\src\\main\\resources\\Drivers\\geckodriver.exe");
+	    	System.setProperty("webdriver.gecko.driver", "D:\\git\\Tenx_Prod2\\src\\test\\resources\\Drivers\\geckodriver.exe");
 	    	 driver=new FirefoxDriver();
 	    	 driver.manage().window().maximize();
 	     }

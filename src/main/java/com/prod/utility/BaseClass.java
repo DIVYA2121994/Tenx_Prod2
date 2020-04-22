@@ -60,7 +60,7 @@ public class BaseClass extends TenxPO
 	{
 		try
 		{
-		 File file = new File ("E:\\Selenium-Programs\\ProductionStatus\\src\\test\\resources\\config.properties");
+		 File file = new File ("D:\\git\\Tenx_Prod2\\src\\test\\resources");
 		 FileInputStream fis = new FileInputStream (file);
 		 p.load(fis);
 		}
