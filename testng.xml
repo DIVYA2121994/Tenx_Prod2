@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
   <test thread-count="5" name="Test">
-  <classes>
-      <class name="com.prod.testsuite.TenxTNG"/>
-  </classes>
+    <classes>
+      <class name="com.tenx.prod.testsuite.TenxProdTNG"/>
+    </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
