@@ -3,7 +3,6 @@ package com.tenx.prod.testsuite;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -87,11 +86,6 @@ public class TenxProdTNG extends TenxBaseClass
 		Assert.assertTrue(success);
 		test.log(Status.INFO, "EFC Pharmacy successfully logged In!!");
 		}
-		/*
-		 * wait = new WebDriverWait(driver, 1000);
-		 * wait.until(ExpectedConditions.elementToBeClickable(TenxPageObjects.logout));
-		 * click(driver, TenxPageObjects.logout);
-		 */
 		actions(driver, TenxPageObjects.logout);
 		wait = new WebDriverWait(driver, 1000);
 	    String resulturl = driver.getCurrentUrl();
@@ -128,11 +122,6 @@ public class TenxProdTNG extends TenxBaseClass
 			Boolean success = loginurl.contains("MyProfile");
 			Assert.assertTrue(success);
 			test.log(Status.INFO, "EFC Admin successfully logged In!!");
-			/*
-			 * wait = new WebDriverWait(driver, 1000);
-			 * wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
-			 * click(driver, TenxPageObjects.logout);
-			 */
 			actions(driver, TenxPageObjects.logout);
 			wait = new WebDriverWait(driver, 1000);
 			String resulturl = driver.getCurrentUrl();
@@ -145,7 +134,7 @@ public class TenxProdTNG extends TenxBaseClass
 			e.printStackTrace();
 		}
 	}
-	@Test(priority = 2, enabled = false) 
+	@Test(priority = 2, enabled = true) 
 	public void gt_pharmacy_prod() throws InterruptedException 
 	  {
 		    try 
@@ -176,9 +165,7 @@ public class TenxProdTNG extends TenxBaseClass
 				Assert.assertTrue(success);
 				test.log(Status.INFO, "GT Pharmacy successfully logged In!!");
 				}
-				wait = new WebDriverWait(driver, 1000);
-				wait.until(ExpectedConditions.elementToBeClickable(TenxPageObjects.logout));
-				click(driver, TenxPageObjects.logout);
+				actions(driver, TenxPageObjects.logout);
 				wait = new WebDriverWait(driver, 1000);
 				String resulturl = driver.getCurrentUrl();
 				Boolean result = resulturl.equalsIgnoreCase(gtpharm);
@@ -193,7 +180,7 @@ public class TenxProdTNG extends TenxBaseClass
 			
 	  }
 	  
-	  @Test(priority = 3, enabled = false) 
+	  @Test(priority = 3, enabled = true) 
 	  public void gt_admin_prod() throws InterruptedException 
 	  {
 		    try 
@@ -216,9 +203,7 @@ public class TenxProdTNG extends TenxBaseClass
 				Boolean success = loginurl.contains("MyProfile");
 				Assert.assertTrue(success);
 				test.log(Status.INFO, "GT Admin successfully logged In!!");
-				wait = new WebDriverWait(driver, 1000);
-				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
-				click(driver, TenxPageObjects.logout);
+				actions(driver, TenxPageObjects.logout);
 				wait = new WebDriverWait(driver, 1000);
 				String resulturl = driver.getCurrentUrl();
 				Boolean result = resulturl.equalsIgnoreCase(gtadmin);
@@ -231,7 +216,7 @@ public class TenxProdTNG extends TenxBaseClass
 			}
 	  }
 	  
-	  @Test(priority = 4, enabled = false) 
+	  @Test(priority = 4, enabled = true) 
 	  public void hn_pharmacy_prod() throws InterruptedException 
 	  {
 		    try 
@@ -262,9 +247,7 @@ public class TenxProdTNG extends TenxBaseClass
 				Assert.assertTrue(success);
 				test.log(Status.INFO, "HN Pharmacy successfully logged In!!");
 				}
-				wait = new WebDriverWait(driver, 1000);
-				wait.until(ExpectedConditions.elementToBeClickable(TenxPageObjects.logout));
-				click(driver, TenxPageObjects.logout);
+				actions(driver, TenxPageObjects.logout);
 				wait = new WebDriverWait(driver, 1000);
 				String resulturl = driver.getCurrentUrl();
 				Boolean result = resulturl.equalsIgnoreCase(hnpharm);
@@ -279,7 +262,7 @@ public class TenxProdTNG extends TenxBaseClass
 			
 	  }
 	  
-	  @Test(priority = 5, enabled = false) 
+	  @Test(priority = 5, enabled = true) 
 	  public void hn_admin_prod() throws InterruptedException 
 	  {
 		    try 
@@ -302,9 +285,7 @@ public class TenxProdTNG extends TenxBaseClass
 				Boolean success = loginurl.contains("MyProfile");
 				Assert.assertTrue(success);
 				test.log(Status.INFO, "HN Admin successfully logged In!!");
-				wait = new WebDriverWait(driver, 1000);
-				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
-				click(driver, TenxPageObjects.logout);
+				actions(driver, TenxPageObjects.logout);
 				wait = new WebDriverWait(driver, 1000);
 				String resulturl = driver.getCurrentUrl();
 				Boolean result = resulturl.equalsIgnoreCase(hnadmin);
