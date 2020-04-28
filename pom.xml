@@ -150,7 +150,6 @@
 									<directory>${project.basedir}\target\surefire-reports</directory>
 									<includes>
 										<include>emailable-report.html</include>
-										<include>index.html</include>
 									</includes>
 								</fileSet>
 							</fileSets>

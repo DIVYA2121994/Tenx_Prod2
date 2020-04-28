@@ -61,6 +61,7 @@ public class TenxProdTNG extends TenxBaseClass
 	{
 		try
 		{
+		System.out.println("EFC Pharmacy Prod test started");
 		test = extent.createTest("efc_pharmacy_prod");
 		String efcph = p.getProperty("efcpharmacy_url");
 		String efc_userid = p.getProperty("efcPH_userid");
@@ -87,8 +88,12 @@ public class TenxProdTNG extends TenxBaseClass
 		test.log(Status.INFO, "EFC Pharmacy successfully logged In!!");
 		}
 		wait = new WebDriverWait(driver, 1000);
-		wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+		wait.until(ExpectedConditions.elementToBeClickable(TenxPageObjects.logout));
 	    click(driver, TenxPageObjects.logout);
+		wait = new WebDriverWait(driver, 1000);
+	    String resulturl = driver.getCurrentUrl();
+	    Boolean result = resulturl.equalsIgnoreCase(efcph);
+	    Assert.assertTrue(result);
 		test.log(Status.INFO, "EFC Pharmacy Test Completed!!");
 		}
 		catch(Exception e)
@@ -102,6 +107,7 @@ public class TenxProdTNG extends TenxBaseClass
 	{
 		try 
 		{
+			System.out.println("EFC Admin Prod test started");
 			test = extent.createTest("efc_admin_prod");
 			String efcadmin = p.getProperty("efcadminurl");
 			String efc_ad_uid = p.getProperty("efcAD_userid");
@@ -122,6 +128,10 @@ public class TenxProdTNG extends TenxBaseClass
 			wait = new WebDriverWait(driver, 1000);
 			wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
 			click(driver, TenxPageObjects.logout);
+			wait = new WebDriverWait(driver, 1000);
+			String resulturl = driver.getCurrentUrl();
+			Boolean result = resulturl.equalsIgnoreCase(efcadmin);
+			Assert.assertTrue(result);
 			test.log(Status.INFO, "EFC Admin Test Completed!!");
 		} 
 		catch (Exception e)
@@ -134,7 +144,8 @@ public class TenxProdTNG extends TenxBaseClass
 	  {
 		    try 
 		    {
-				test = extent.createTest("gt_pharmacy_prod");
+		    	System.out.println("GT Pharmacy Prod test started");
+		    	test = extent.createTest("gt_pharmacy_prod");
 				String gtpharm = p.getProperty("gtpharmacy_url");
 				String gt_pharm_uid = p.getProperty("gtPH_userid");
 				String gt_pharm_pwd = p.getProperty("gtPH_password");
@@ -160,8 +171,12 @@ public class TenxProdTNG extends TenxBaseClass
 				test.log(Status.INFO, "GT Pharmacy successfully logged In!!");
 				}
 				wait = new WebDriverWait(driver, 1000);
-				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+				wait.until(ExpectedConditions.elementToBeClickable(TenxPageObjects.logout));
 				click(driver, TenxPageObjects.logout);
+				wait = new WebDriverWait(driver, 1000);
+				String resulturl = driver.getCurrentUrl();
+				Boolean result = resulturl.equalsIgnoreCase(gtpharm);
+				Assert.assertTrue(result);
 				test.log(Status.INFO, "GT Pharmacy Test Completed!!");
 			}
 		    catch (Exception e) 
@@ -177,7 +192,8 @@ public class TenxProdTNG extends TenxBaseClass
 	  {
 		    try 
 		    {
-				test = extent.createTest("gt_admin_prod");
+		    	System.out.println("GT Admin Prod test started");
+		    	test = extent.createTest("gt_admin_prod");
 				String gtadmin = p.getProperty("gtadmin_url");
 				String gt_admin_uid = p.getProperty("gtAD_userid");
 				String gt_admin_pwd = p.getProperty("gtAD_password");
@@ -197,6 +213,10 @@ public class TenxProdTNG extends TenxBaseClass
 				wait = new WebDriverWait(driver, 1000);
 				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
 				click(driver, TenxPageObjects.logout);
+				wait = new WebDriverWait(driver, 1000);
+				String resulturl = driver.getCurrentUrl();
+				Boolean result = resulturl.equalsIgnoreCase(gtadmin);
+				Assert.assertTrue(result);
 				test.log(Status.INFO, "GT Admin Test Completed!!");
 			} 
 		    catch (Exception e) 
@@ -210,7 +230,8 @@ public class TenxProdTNG extends TenxBaseClass
 	  {
 		    try 
 		    {
-				test = extent.createTest("hn_pharmacy_prod");
+		    	System.out.println("HN Pharmacy Prod test started");
+		    	test = extent.createTest("hn_pharmacy_prod");
 				String hnpharm = p.getProperty("hnpharmacy_url");
 				String hn_pharm_uid = p.getProperty("hnPH_userid");
 				String hn_pharm_pwd = p.getProperty("hnPH_password");
@@ -236,8 +257,12 @@ public class TenxProdTNG extends TenxBaseClass
 				test.log(Status.INFO, "HN Pharmacy successfully logged In!!");
 				}
 				wait = new WebDriverWait(driver, 1000);
-				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+				wait.until(ExpectedConditions.elementToBeClickable(TenxPageObjects.logout));
 				click(driver, TenxPageObjects.logout);
+				wait = new WebDriverWait(driver, 1000);
+				String resulturl = driver.getCurrentUrl();
+				Boolean result = resulturl.equalsIgnoreCase(hnpharm);
+				Assert.assertTrue(result);
 				test.log(Status.INFO, "HN Pharmacy Test Completed!!");
 			} 
 		    catch (Exception e) 
@@ -253,7 +278,8 @@ public class TenxProdTNG extends TenxBaseClass
 	  {
 		    try 
 		    {
-				test = extent.createTest("hn_admin_prod");
+		    	System.out.println("HN Admin Prod test started");
+		    	test = extent.createTest("hn_admin_prod");
 				String hnadmin = p.getProperty("hnadmin_url");
 				String hn_admin_uid = p.getProperty("hnAD_userid");
 				String hn_admin_pwd = p.getProperty("hnAD_password");
@@ -273,6 +299,10 @@ public class TenxProdTNG extends TenxBaseClass
 				wait = new WebDriverWait(driver, 1000);
 				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
 				click(driver, TenxPageObjects.logout);
+				wait = new WebDriverWait(driver, 1000);
+				String resulturl = driver.getCurrentUrl();
+				Boolean result = resulturl.equalsIgnoreCase(hnadmin);
+				Assert.assertTrue(result);
 				test.log(Status.INFO, "HN Admin Test Completed!!");
 			} 
 		    catch (Exception e) 
