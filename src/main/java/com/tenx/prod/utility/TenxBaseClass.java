@@ -81,4 +81,25 @@ public class TenxBaseClass
         return destination;
     	 
      }
+	 public boolean isObjectDisplayed(WebDriver driver, WebElement element) 
+	 {
+			int attempts = 0;
+			boolean isObjDisp = false;
+			while(attempts < 5) 
+			{
+				try 
+				{
+					Thread.sleep(500);
+					element.isDisplayed();
+					isObjDisp = true;
+					break;
+				}
+
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+				attempts++;	
+			}
+			return isObjDisp;
+		}
 }

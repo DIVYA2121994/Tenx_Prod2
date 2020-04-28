@@ -22,4 +22,7 @@ public class TenxPageObjects
     
     @FindBy(how=How.XPATH, using = "//a[@id='green']")
     public static WebElement logout;
+    
+    @FindBy(how=How.XPATH, using = "//button[contains(text(),'OK')]")
+    public static WebElement ok;
 }

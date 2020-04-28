@@ -3,6 +3,8 @@ package com.tenx.prod.testsuite;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -26,6 +28,7 @@ public class TenxProdTNG extends TenxBaseClass
 	public ExtentSparkReporter htmlreport;
 	public ExtentReports extent;
 	public ExtentTest test;
+	public WebDriverWait wait;
 	
    @BeforeSuite
 	public void setExtent()
@@ -56,130 +59,226 @@ public class TenxProdTNG extends TenxBaseClass
 	@Test(priority = 0, enabled = true)
 	public void efc_pharmacy_prod() throws InterruptedException
 	{
+		try
+		{
 		test = extent.createTest("efc_pharmacy_prod");
-	    //test.getModel().setStartTime(htmlreport.getStartTime());
 		String efcph = p.getProperty("efcpharmacy_url");
 		String efc_userid = p.getProperty("efcPH_userid");
 		String efc_pwd = p.getProperty("efcPH_password");
-		test.log(Status.INFO, "Start Test !!");
+		test.log(Status.INFO, "EFC Pharmacy Test Started !!");
 		driver.get(efcph);
 		String geturl = driver.getCurrentUrl();
 		Assert.assertEquals(geturl, efcph);
 		PageFactory.initElements(driver, TenxPageObjects.class);
 		type(driver, TenxPageObjects.usernamefield, efc_userid);
 		type(driver, TenxPageObjects.passwordfield, efc_pwd);
-		test.log(Status.INFO, "Test In Progress!!");
 		click(driver, TenxPageObjects.login);
+		wait = new WebDriverWait(driver, 1000);
 		String loginurl = driver.getCurrentUrl();
+		if (loginurl.equals(efcph))
+		{
+			isObjectDisplayed(driver, TenxPageObjects.ok);
+			click(driver, TenxPageObjects.ok);
+		}
+		else if(loginurl.contains("Dashboard"))
+		{
 		Boolean success = loginurl.contains("Dashboard");
 		Assert.assertTrue(success);
-		Thread.sleep(1000);
-		click(driver, TenxPageObjects.logout);
-		test.log(Status.INFO, "Test Completed!!");
-		//test.getModel().setEndTime(htmlreport.getEndTime());
+		test.log(Status.INFO, "EFC Pharmacy successfully logged In!!");
+		}
+		wait = new WebDriverWait(driver, 1000);
+		wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+	    click(driver, TenxPageObjects.logout);
+		test.log(Status.INFO, "EFC Pharmacy Test Completed!!");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 	}
 	@Test(priority = 1, enabled = true)
 	public void efc_admin_prod() throws InterruptedException
 	{
-		test = extent.createTest("efc_admin_prod");
-		String efcadmin = p.getProperty("efcadminurl");
-		String efc_ad_uid = p.getProperty("efcAD_userid");
-		String efc_ad_pwd = p.getProperty("efcAD_password");
-		driver.get(efcadmin);
-		String geturl = driver.getCurrentUrl();
-		Assert.assertEquals(geturl, efcadmin);
-		PageFactory.initElements(driver, TenxPageObjects.class);
-		type(driver, TenxPageObjects.usernamefield, efc_ad_uid);
-		type(driver, TenxPageObjects.passwordfield, efc_ad_pwd);
-		click(driver, TenxPageObjects.login);
-		String loginurl = driver.getCurrentUrl();
-		Boolean success = loginurl.contains("MyProfile");
-		Assert.assertTrue(success);
-		Thread.sleep(1000);
-		click(driver, TenxPageObjects.logout);
+		try 
+		{
+			test = extent.createTest("efc_admin_prod");
+			String efcadmin = p.getProperty("efcadminurl");
+			String efc_ad_uid = p.getProperty("efcAD_userid");
+			String efc_ad_pwd = p.getProperty("efcAD_password");
+			test.log(Status.INFO, "EFC Admin Test Started !!");
+			driver.get(efcadmin);
+			String geturl = driver.getCurrentUrl();
+			Assert.assertEquals(geturl, efcadmin);
+			PageFactory.initElements(driver, TenxPageObjects.class);
+			type(driver, TenxPageObjects.usernamefield, efc_ad_uid);
+			type(driver, TenxPageObjects.passwordfield, efc_ad_pwd);
+			click(driver, TenxPageObjects.login);
+			wait = new WebDriverWait(driver, 1000);
+			String loginurl = driver.getCurrentUrl();
+			Boolean success = loginurl.contains("MyProfile");
+			Assert.assertTrue(success);
+			test.log(Status.INFO, "EFC Admin successfully logged In!!");
+			wait = new WebDriverWait(driver, 1000);
+			wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+			click(driver, TenxPageObjects.logout);
+			test.log(Status.INFO, "EFC Admin Test Completed!!");
+		} 
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 	@Test(priority = 2, enabled = true) 
 	public void gt_pharmacy_prod() throws InterruptedException 
 	  {
-		    test = extent.createTest("gt_pharmacy_prod");
-		    String gtpharm = p.getProperty("gtpharmacy_url");
-			String gt_pharm_uid = p.getProperty("gtPH_userid");
-			String gt_pharm_pwd = p.getProperty("gtPH_password");
-			driver.get(gtpharm);
-			String geturl = driver.getCurrentUrl();
-			Assert.assertEquals(geturl, gtpharm);
-			PageFactory.initElements(driver, TenxPageObjects.class);
-			type(driver, TenxPageObjects.usernamefield, gt_pharm_uid);
-			type(driver, TenxPageObjects.passwordfield, gt_pharm_pwd);
-			click(driver, TenxPageObjects.login);
-			String loginurl = driver.getCurrentUrl();
-			Boolean success = loginurl.contains("Dashboard");
-			Assert.assertTrue(success);
-			Thread.sleep(1000);
-			click(driver, TenxPageObjects.logout);
+		    try 
+		    {
+				test = extent.createTest("gt_pharmacy_prod");
+				String gtpharm = p.getProperty("gtpharmacy_url");
+				String gt_pharm_uid = p.getProperty("gtPH_userid");
+				String gt_pharm_pwd = p.getProperty("gtPH_password");
+				test.log(Status.INFO, "GT Pharmacy Test Started !!");
+				driver.get(gtpharm);
+				String geturl = driver.getCurrentUrl();
+				Assert.assertEquals(geturl, gtpharm);
+				PageFactory.initElements(driver, TenxPageObjects.class);
+				type(driver, TenxPageObjects.usernamefield, gt_pharm_uid);
+				type(driver, TenxPageObjects.passwordfield, gt_pharm_pwd);
+				click(driver, TenxPageObjects.login);
+				wait = new WebDriverWait(driver, 1000);
+				String loginurl = driver.getCurrentUrl();
+				if (loginurl.equals(gtpharm))
+				{
+					isObjectDisplayed(driver, TenxPageObjects.ok);
+					click(driver, TenxPageObjects.ok);
+				}
+				else if(loginurl.contains("Dashboard"))
+				{
+				Boolean success = loginurl.contains("Dashboard");
+				Assert.assertTrue(success);
+				test.log(Status.INFO, "GT Pharmacy successfully logged In!!");
+				}
+				wait = new WebDriverWait(driver, 1000);
+				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+				click(driver, TenxPageObjects.logout);
+				test.log(Status.INFO, "GT Pharmacy Test Completed!!");
+			}
+		    catch (Exception e) 
+		    {
+				e.printStackTrace();
+			}
+			
+			
 	  }
 	  
 	  @Test(priority = 3, enabled = true) 
 	  public void gt_admin_prod() throws InterruptedException 
 	  {
-		    test = extent.createTest("gt_admin_prod");
-		    String gtadmin = p.getProperty("gtadmin_url");
-			String gt_admin_uid = p.getProperty("gtAD_userid");
-			String gt_admin_pwd = p.getProperty("gtAD_password");
-			driver.get(gtadmin);
-			String geturl = driver.getCurrentUrl();
-			Assert.assertEquals(geturl, gtadmin);
-			PageFactory.initElements(driver, TenxPageObjects.class);
-			type(driver, TenxPageObjects.usernamefield, gt_admin_uid);
-			type(driver, TenxPageObjects.passwordfield, gt_admin_pwd);
-			click(driver, TenxPageObjects.login);
-			String loginurl = driver.getCurrentUrl();
-			Boolean success = loginurl.contains("MyProfile");
-			Assert.assertTrue(success);
-			Thread.sleep(1000);
-			click(driver, TenxPageObjects.logout);
+		    try 
+		    {
+				test = extent.createTest("gt_admin_prod");
+				String gtadmin = p.getProperty("gtadmin_url");
+				String gt_admin_uid = p.getProperty("gtAD_userid");
+				String gt_admin_pwd = p.getProperty("gtAD_password");
+				driver.get(gtadmin);
+				test.log(Status.INFO, "GT Admin Test Started !!");
+				String geturl = driver.getCurrentUrl();
+				Assert.assertEquals(geturl, gtadmin);
+				PageFactory.initElements(driver, TenxPageObjects.class);
+				type(driver, TenxPageObjects.usernamefield, gt_admin_uid);
+				type(driver, TenxPageObjects.passwordfield, gt_admin_pwd);
+				click(driver, TenxPageObjects.login);
+				wait = new WebDriverWait(driver, 1000);
+				String loginurl = driver.getCurrentUrl();
+				Boolean success = loginurl.contains("MyProfile");
+				Assert.assertTrue(success);
+				test.log(Status.INFO, "GT Admin successfully logged In!!");
+				wait = new WebDriverWait(driver, 1000);
+				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+				click(driver, TenxPageObjects.logout);
+				test.log(Status.INFO, "GT Admin Test Completed!!");
+			} 
+		    catch (Exception e) 
+		    {
+				e.printStackTrace();
+			}
 	  }
 	  
 	  @Test(priority = 4, enabled = true) 
 	  public void hn_pharmacy_prod() throws InterruptedException 
 	  {
-		    test = extent.createTest("hn_pharmacy_prod");
-		    String hnpharm = p.getProperty("hnpharmacy_url");
-			String hn_pharm_uid = p.getProperty("hnPH_userid");
-			String hn_pharm_pwd = p.getProperty("hnPH_password");
-			driver.get(hnpharm);
-			String geturl = driver.getCurrentUrl();
-			Assert.assertEquals(geturl, hnpharm);
-			PageFactory.initElements(driver, TenxPageObjects.class);
-			type(driver, TenxPageObjects.usernamefield, hn_pharm_uid);
-			type(driver, TenxPageObjects.passwordfield, hn_pharm_pwd);
-			click(driver, TenxPageObjects.login);
-			String loginurl = driver.getCurrentUrl();
-			Boolean success = loginurl.contains("Dashboard");
-			Assert.assertTrue(success);
-			Thread.sleep(1000);
-			click(driver, TenxPageObjects.logout);
+		    try 
+		    {
+				test = extent.createTest("hn_pharmacy_prod");
+				String hnpharm = p.getProperty("hnpharmacy_url");
+				String hn_pharm_uid = p.getProperty("hnPH_userid");
+				String hn_pharm_pwd = p.getProperty("hnPH_password");
+				driver.get(hnpharm);
+				test.log(Status.INFO, "HN Pharmacy Test Started !!");
+				String geturl = driver.getCurrentUrl();
+				Assert.assertEquals(geturl, hnpharm);
+				PageFactory.initElements(driver, TenxPageObjects.class);
+				type(driver, TenxPageObjects.usernamefield, hn_pharm_uid);
+				type(driver, TenxPageObjects.passwordfield, hn_pharm_pwd);
+				click(driver, TenxPageObjects.login);
+				wait = new WebDriverWait(driver, 1000);
+				String loginurl = driver.getCurrentUrl();
+				if (loginurl.equals(hnpharm))
+				{
+					isObjectDisplayed(driver, TenxPageObjects.ok);
+					click(driver, TenxPageObjects.ok);
+				}
+				else if(loginurl.contains("Dashboard"))
+				{
+				Boolean success = loginurl.contains("Dashboard");
+				Assert.assertTrue(success);
+				test.log(Status.INFO, "HN Pharmacy successfully logged In!!");
+				}
+				wait = new WebDriverWait(driver, 1000);
+				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+				click(driver, TenxPageObjects.logout);
+				test.log(Status.INFO, "HN Pharmacy Test Completed!!");
+			} 
+		    catch (Exception e) 
+		    {
+				e.printStackTrace();
+			}
+			
+			
 	  }
 	  
 	  @Test(priority = 5, enabled = true) 
 	  public void hn_admin_prod() throws InterruptedException 
 	  {
-		    test = extent.createTest("hn_admin_prod");
-		    String hnadmin = p.getProperty("hnadmin_url");
-			String hn_admin_uid = p.getProperty("hnAD_userid");
-			String hn_admin_pwd = p.getProperty("hnAD_password");
-			driver.get(hnadmin);
-			String geturl = driver.getCurrentUrl();
-			Assert.assertEquals(geturl, hnadmin);
-			PageFactory.initElements(driver, TenxPageObjects.class);
-			type(driver, TenxPageObjects.usernamefield, hn_admin_uid);
-			type(driver, TenxPageObjects.passwordfield, hn_admin_pwd);
-			click(driver, TenxPageObjects.login);
-			String loginurl = driver.getCurrentUrl();
-			Boolean success = loginurl.contains("MyProfile");
-			Assert.assertTrue(success);
-			Thread.sleep(1000);
-			click(driver, TenxPageObjects.logout);
+		    try 
+		    {
+				test = extent.createTest("hn_admin_prod");
+				String hnadmin = p.getProperty("hnadmin_url");
+				String hn_admin_uid = p.getProperty("hnAD_userid");
+				String hn_admin_pwd = p.getProperty("hnAD_password");
+				driver.get(hnadmin);
+				test.log(Status.INFO, "HN Admin Test Started !!");
+				String geturl = driver.getCurrentUrl();
+				Assert.assertEquals(geturl, hnadmin);
+				PageFactory.initElements(driver, TenxPageObjects.class);
+				type(driver, TenxPageObjects.usernamefield, hn_admin_uid);
+				type(driver, TenxPageObjects.passwordfield, hn_admin_pwd);
+				click(driver, TenxPageObjects.login);
+				wait = new WebDriverWait(driver, 1000);
+				String loginurl = driver.getCurrentUrl();
+				Boolean success = loginurl.contains("MyProfile");
+				Assert.assertTrue(success);
+				test.log(Status.INFO, "HN Admin successfully logged In!!");
+				wait = new WebDriverWait(driver, 1000);
+				wait.until(ExpectedConditions.visibilityOf(TenxPageObjects.logout));
+				click(driver, TenxPageObjects.logout);
+				test.log(Status.INFO, "HN Admin Test Completed!!");
+			} 
+		    catch (Exception e) 
+		    {
+				e.printStackTrace();
+			}
 	  }
 	  @AfterMethod
 	  public void tearDown (ITestResult result) throws IOException
