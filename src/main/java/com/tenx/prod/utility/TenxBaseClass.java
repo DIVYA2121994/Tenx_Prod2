@@ -12,6 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class TenxBaseClass 
 {
@@ -102,4 +103,10 @@ public class TenxBaseClass
 			}
 			return isObjDisp;
 		}
+	 public void actions(WebDriver driver, WebElement element)
+	 {
+		 Actions ac = new Actions (driver);
+		 ac.moveToElement(element).build().perform();
+		 click(driver, element);
+	 }
 }
