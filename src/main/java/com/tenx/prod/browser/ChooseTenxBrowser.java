@@ -1,7 +1,9 @@
 package com.tenx.prod.browser;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
@@ -14,8 +16,11 @@ public class ChooseTenxBrowser
 	     {
 	    	 String path = System.getProperty("user.dir");
 	    	 System.setProperty("webdriver.chrome.driver",path+"\\src\\test\\resources\\Drivers\\chromedriver.exe");
-	    	 driver=new ChromeDriver();
-	    	 driver.manage().window().maximize();
+	    	 ChromeOptions options = new ChromeOptions();
+	    	 options.addArguments("start-maximized"); 
+	    	 options.addArguments("enable-automation"); 
+	    	 options.setPageLoadStrategy(PageLoadStrategy.EAGER);
+	    	 driver=new ChromeDriver(options);
 	    	 
 	    	 
 	     }

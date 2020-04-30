@@ -99,7 +99,7 @@ public class TenxProdTNG extends TenxBaseClass
 		}
 		
 	}
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void efc_admin_prod() throws InterruptedException
 	{
 		try 
@@ -134,7 +134,7 @@ public class TenxProdTNG extends TenxBaseClass
 			e.printStackTrace();
 		}
 	}
-	@Test(priority = 2, enabled = false) 
+	@Test(priority = 2, enabled = true) 
 	public void gt_pharmacy_prod() throws InterruptedException 
 	  {
 		    try 
@@ -180,7 +180,7 @@ public class TenxProdTNG extends TenxBaseClass
 			
 	  }
 	  
-	  @Test(priority = 3, enabled = false) 
+	  @Test(priority = 3, enabled = true) 
 	  public void gt_admin_prod() throws InterruptedException 
 	  {
 		    try 
@@ -216,7 +216,7 @@ public class TenxProdTNG extends TenxBaseClass
 			}
 	  }
 	  
-	  @Test(priority = 4, enabled = false) 
+	  @Test(priority = 4, enabled = true) 
 	  public void hn_pharmacy_prod() throws InterruptedException 
 	  {
 		    try 
@@ -262,7 +262,7 @@ public class TenxProdTNG extends TenxBaseClass
 			
 	  }
 	  
-	  @Test(priority = 5, enabled = false) 
+	  @Test(priority = 5, enabled = true) 
 	  public void hn_admin_prod() throws InterruptedException 
 	  {
 		    try 
