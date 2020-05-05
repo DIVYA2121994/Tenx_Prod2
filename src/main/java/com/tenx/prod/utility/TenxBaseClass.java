@@ -13,11 +13,14 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TenxBaseClass 
 {
 	public static WebDriver driver;
 	protected static Properties p = new Properties();
+	WebDriverWait wait;
 	public static void setHighlight(WebDriver driver, WebElement element) 
 	{
 		try 
@@ -106,7 +109,17 @@ public class TenxBaseClass
 	 public void actions(WebDriver driver, WebElement element)
 	 {
 		 Actions ac = new Actions (driver);
+		 driver.navigate().refresh();
+		 wait = new WebDriverWait(driver, 10000);
+		 wait.until(ExpectedConditions.elementToBeClickable(element));
 		 ac.moveToElement(element).build().perform();
 		 click(driver, element);
+	 }
+	 public void jsclick(WebDriver driver, WebElement element)
+	 {
+		 JavascriptExecutor executor = (JavascriptExecutor)driver;
+		 System.out.println("element going to click");
+		 setHighlight(driver, element);
+		 executor.executeScript("arguments[0].click();", element);
 	 }
 }
