@@ -135,7 +135,7 @@
 							<receivers>
 								<!-- To Email address -->
 								<receiver>vidhyadivya2121994@gmail.com</receiver>
-								<!-- <receiver>arvinth.saadhvi@gmail.com</receiver> -->
+								<receiver>arvinth.saadhvi@gmail.com</receiver>
 							</receivers>
 							<fileSets>
 								<fileSet>
