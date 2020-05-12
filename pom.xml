@@ -120,7 +120,7 @@
 							<!-- From Email address -->
 							<from>divya.saadhvi@gmail.com</from>
 							<!-- Email subject -->
-							<subject>Production status Automation Report</subject>
+							<subject>TenX Production status Automation Report</subject>
 							<!-- Fail the build if the mail doesnt reach -->
 							<failonerror>true</failonerror>
 							<!-- host -->
@@ -135,7 +135,8 @@
 							<receivers>
 								<!-- To Email address -->
 								<receiver>vidhyadivya2121994@gmail.com</receiver>
-								<receiver>arvinth.saadhvi@gmail.com</receiver>
+								<!-- <receiver>arvinth.saadhvi@gmail.com</receiver>
+								<receiver>upprem@10x.org</receiver> -->
 							</receivers>
 							<fileSets>
 								<fileSet>
@@ -143,13 +144,6 @@
 									<directory>${project.basedir}\test-output</directory>
 									<includes>
 										<include>10X_ProdStatusReport.html</include>
-									</includes>
-								</fileSet>
-								<fileSet>
-									<!-- Report directory Path -->
-									<directory>${project.basedir}\target\surefire-reports</directory>
-									<includes>
-										<include>emailable-report.html</include>
 									</includes>
 								</fileSet>
 							</fileSets>

@@ -39,13 +39,17 @@ public class TenxProdTNG extends TenxBaseClass
 		htmlreport.config().setReportName("Tenx Production State"); //Name of the Report
 		htmlreport.config().setTheme(Theme.DARK);
 		htmlreport.config().setTimeStampFormat("dd.MM.yyyy.HH.mm.ss");
+		htmlreport.setAnalysisStrategy(AnalysisStrategy.TEST);
 		extent = new ExtentReports();
 		extent.attachReporter(htmlreport);
-		extent.setAnalysisStrategy(AnalysisStrategy.SUITE);
-		extent.setSystemInfo("Hostname", "LocalHost");
-		extent.setSystemInfo("OS", "Windows10");
-		extent.setSystemInfo("Tester Name", "Divya_Ashvich");
-		extent.setSystemInfo("BowserInformation", p.getProperty("Browser"));
+		extent.setAnalysisStrategy(AnalysisStrategy.TEST);
+		prop();
+		extent.setSystemInfo("EFC PHARMACY", p.getProperty("efcpharmacy_url"));
+		extent.setSystemInfo("EFC ADMIN", p.getProperty("efcadminurl"));
+		extent.setSystemInfo("GT PHARMACY", p.getProperty("gtpharmacy_url"));
+		extent.setSystemInfo("GT ADMIN", p.getProperty("gtadmin_url"));
+		extent.setSystemInfo("HN PHARMACY", p.getProperty("hnpharmacy_url"));
+		extent.setSystemInfo("HN ADMIN", p.getProperty("hnadmin_url"));
 	}
 	
 	@BeforeMethod
@@ -63,7 +67,7 @@ public class TenxProdTNG extends TenxBaseClass
 		try
 		{
 		System.out.println("EFC Pharmacy Prod test started");
-		test = extent.createTest("efc_pharmacy_prod");
+		test = extent.createTest("EFC_PROD_PHARMACY");
 		String efcph = p.getProperty("efcpharmacy_url");
 		String efc_userid = p.getProperty("efcPH_userid");
 		String efc_pwd = p.getProperty("efcPH_password");
@@ -108,7 +112,7 @@ public class TenxProdTNG extends TenxBaseClass
 		try 
 		{
 			System.out.println("EFC Admin Prod test started");
-			test = extent.createTest("efc_admin_prod");
+			test = extent.createTest("EFC_PROD_ADMIN ");
 			String efcadmin = p.getProperty("efcadminurl");
 			String efc_ad_uid = p.getProperty("efcAD_userid");
 			String efc_ad_pwd = p.getProperty("efcAD_password");
@@ -144,7 +148,7 @@ public class TenxProdTNG extends TenxBaseClass
 		    try 
 		    {
 		    	System.out.println("GT Pharmacy Prod test started");
-		    	test = extent.createTest("gt_pharmacy_prod");
+		    	test = extent.createTest("GT_PROD_PHARMACY");
 				String gtpharm = p.getProperty("gtpharmacy_url");
 				String gt_pharm_uid = p.getProperty("gtPH_userid");
 				String gt_pharm_pwd = p.getProperty("gtPH_password");
@@ -191,7 +195,7 @@ public class TenxProdTNG extends TenxBaseClass
 		    try 
 		    {
 		    	System.out.println("GT Admin Prod test started");
-		    	test = extent.createTest("gt_admin_prod");
+		    	test = extent.createTest("GT_PROD_ADMIN");
 				String gtadmin = p.getProperty("gtadmin_url");
 				String gt_admin_uid = p.getProperty("gtAD_userid");
 				String gt_admin_pwd = p.getProperty("gtAD_password");
@@ -228,7 +232,7 @@ public class TenxProdTNG extends TenxBaseClass
 		    try 
 		    {
 		    	System.out.println("HN Pharmacy Prod test started");
-		    	test = extent.createTest("hn_pharmacy_prod");
+		    	test = extent.createTest("HN_PROD_PHARMACY");
 				String hnpharm = p.getProperty("hnpharmacy_url");
 				String hn_pharm_uid = p.getProperty("hnPH_userid");
 				String hn_pharm_pwd = p.getProperty("hnPH_password");
@@ -275,7 +279,7 @@ public class TenxProdTNG extends TenxBaseClass
 		    try 
 		    {
 		    	System.out.println("HN Admin Prod test started");
-		    	test = extent.createTest("hn_admin_prod");
+		    	test = extent.createTest("HN_PROD_ADMIN");
 				String hnadmin = p.getProperty("hnadmin_url");
 				String hn_admin_uid = p.getProperty("hnAD_userid");
 				String hn_admin_pwd = p.getProperty("hnAD_password");
