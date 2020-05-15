@@ -50,10 +50,13 @@
 			<artifactId>extentreports</artifactId>
 			<version>4.1.5</version>
 		</dependency>
-		<!-- <dependency> <groupId>ch.fortysix</groupId> <artifactId>maven-postman-plugin</artifactId> 
-			<version>0.1.0</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.5</version>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
@@ -104,7 +107,7 @@
 				</configuration>
 			</plugin>
 			<!-- Post-Man plugin -->
-			<plugin>
+			<!-- <plugin>
 				<groupId>ch.fortysix</groupId>
 				<artifactId>maven-postman-plugin</artifactId>
 				<version>0.1.6</version>
@@ -115,31 +118,22 @@
 						<goals>
 							<goal>send-mail</goal>
 						</goals>
-						<inherited>true</inherited>
+						<inherited>false</inherited>
 						<configuration>
-							<!-- From Email address -->
-							<from>divya.saadhvi@gmail.com</from>
-							<!-- Email subject -->
+							<from>gsdivya@ashvichinfotek.com</from>
 							<subject>TenX Production status Automation Report</subject>
-							<!-- Fail the build if the mail doesnt reach -->
 							<failonerror>true</failonerror>
-							<!-- host -->
-							<mailhost>smtp.gmail.com</mailhost>
-							<!-- port of the host -->
-							<mailport>465</mailport>
-							<mailssl>true</mailssl>
+							<mailhost>smtp.office365.com</mailhost>
+							<mailport>587</mailport>
+							<mailssl>StartTLS</mailssl>
 							<mailAltConfig>true</mailAltConfig>
-							<!-- Email Authentication(USername and Password) -->
-							<mailuser>divya.saadhvi@gmail.com</mailuser>
-							<mailpassword>Divya@2121994</mailpassword>
+							<mailuser>gsdivya@ashvichinfotek.com</mailuser>
+							<mailpassword>Divu@2121994</mailpassword>
 							<receivers>
-								<!-- To Email address -->
-								<receiver>vidhyadivya2121994@gmail.com</receiver>
-								<receiver>arvinth.saadhvi@gmail.com</receiver>
+								<receiver>garvinth@ashvichinfotek.com</receiver>
 							</receivers>
 							<fileSets>
 								<fileSet>
-									<!-- Report directory Path -->
 									<directory>${project.basedir}\test-output</directory>
 									<includes>
 										<include>10X_ProdStatusReport.html</include>
@@ -149,7 +143,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 </project>

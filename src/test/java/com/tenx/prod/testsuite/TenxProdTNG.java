@@ -2,6 +2,8 @@ package com.tenx.prod.testsuite;
 
 import java.io.IOException;
 
+import javax.mail.MessagingException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -333,8 +335,11 @@ public class TenxProdTNG extends TenxBaseClass
 	  
     
 	@AfterSuite
-	  public void endReport()
+	  public void endReport() throws MessagingException
 	  {
 		  extent.flush();
+		SendEmail.emailconfig();
+		System.out.println("Email Sent Successfully");
+			 
 	  }
 }
